@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import capitalizeFirstLetter from '../util/capitalizeFirstLetter';
 
 const PeopleListItem = props => {
-    const {person} =  props;
+    const {person, onPressItem} =  props;
     const {title, first, last} = person.name;
     const {thumbnail} = person.picture;
 
     return(
-        <TouchableOpacity onPress={() => console.log('Deu toque em: ', first)}>
+        <TouchableOpacity onPress={() => {onPressItem({person});}}>
             <View style={styles.line}>
                 <Image source={{uri: thumbnail}} style={styles.avatar} />
                 <Text style={styles.linetext}>{capitalizeFirstLetter(title) + ' ' + capitalizeFirstLetter(first) + ' ' + capitalizeFirstLetter(last)}</Text>
